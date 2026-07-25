@@ -3,7 +3,7 @@ import React from 'react';
 import AppShell from '@/components/AppShell';
 
 export const metadata = {
-  title: 'AwaazLabs Tenant Portal',
+  title: 'Urdu VaaS — Tenant Dashboard',
   description: 'Self-service management portal for Urdu Voice-Agent-as-a-Service',
 };
 

@@ -12,6 +12,15 @@ export type PortalAgent = {
   total_agent_sec?: number;
 };
 
+export type PortalVoice = {
+  id: string;
+  displayName: string;
+  gender: string;
+  previewUrl: string | null;
+  artworkUrl: string | null;
+  enabled: boolean;
+};
+
 export type PortalCredentials = {
   publishable_key: string;
   tenant_id: string;
@@ -107,7 +116,6 @@ export function createAgent(body: {
   name: string;
   prompt: string;
   voice_id: string;
-  llm_model: string;
 }) {
   return request<PortalAgent>("/portal/agents", {
     method: "POST",
@@ -121,13 +129,16 @@ export function updateAgent(
     name?: string;
     prompt?: string;
     voice_id?: string;
-    llm_model?: string;
   },
 ) {
   return request<PortalAgent>(`/portal/agents/${agentId}`, {
     method: "PATCH",
     body: JSON.stringify(body),
   });
+}
+
+export function getVoices() {
+  return request<PortalVoice[]>("/portal/voices");
 }
 
 export function getCredentials() {
